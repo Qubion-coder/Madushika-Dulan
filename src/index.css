@@ -8,7 +8,7 @@
   --font-montserrat: "Montserrat", sans-serif;
   --font-playball: "Playball", cursive;
 
-  --color-sage: #7c9575;
+  --color-sage: #87af73;
   --color-paper: #FDFCF8; /* Off-white */
   --color-pink: #f1b3d0;
   --color-gold: #d4a01c;
@@ -18,12 +18,12 @@
   --color-theme-100: #e4e9e1;
   --color-theme-200: #c9d4c5;
   --color-theme-300: #a3b69d;
-  --color-theme-400: #7c9575;
-  --color-theme-500: #5c7556;
-  --color-theme-600: #465b41;
-  --color-theme-700: #384934;
-  --color-theme-800: #2d3b2b;
-  --color-theme-900: #263124;
+  --color-theme-400: #87af73;
+  --color-theme-500: #87af73;
+  --color-theme-600: #87af73;
+  --color-theme-700: #87af73;
+  --color-theme-800: #87af73;
+  --color-theme-900: #87af73;
 }
 
 :root {
@@ -120,7 +120,7 @@ html, body {
 
 .website-shell {
   background:
-    radial-gradient(circle at 18% 14%, rgba(124, 149, 117, 0.15), transparent 38%),
+    radial-gradient(circle at 18% 14%, rgba(135, 175, 115, 0.15), transparent 38%),
     radial-gradient(circle at 84% 72%, rgba(212, 160, 28, 0.12), transparent 42%),
     linear-gradient(180deg, var(--color-paper) 0%, #fdfaf5 42%, var(--color-paper) 100%);
 }
@@ -134,7 +134,7 @@ html, body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 25%, rgba(124, 149, 117, 0.16), transparent 35%),
+    radial-gradient(circle at 20% 25%, rgba(135, 175, 115, 0.16), transparent 35%),
     radial-gradient(circle at 78% 75%, rgba(212, 160, 28, 0.12), transparent 38%);
 }
 
@@ -149,7 +149,7 @@ html, body {
 .paper-grain-strong {
   background-image:
     radial-gradient(circle at 22% 24%, rgba(255, 255, 255, 0.88) 0.55px, transparent 0.85px),
-    radial-gradient(circle at 70% 64%, rgba(124, 149, 117, 0.25) 0.65px, transparent 0.95px), /* theme-400 */
+    radial-gradient(circle at 70% 64%, rgba(135, 175, 115, 0.25) 0.65px, transparent 0.95px), /* theme-400 */
     linear-gradient(180deg, rgba(253, 252, 248, 0.75), rgba(244, 246, 243, 0.8));
   background-size: 8px 8px, 14px 14px, 100% 100%;
 }

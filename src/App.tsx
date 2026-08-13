@@ -320,50 +320,50 @@ export default function WeddingInvitation() {
 
               {/* Left Flap */}
               <motion.div
-                className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-br from-theme-800 via-theme-700 to-theme-900 z-30 shadow-[8px_0_28px_rgba(38,49,36,0.45)] origin-left flex items-center justify-end pr-4 overflow-hidden rounded-l-[1.2rem]"
+                className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-br from-[#87af73] via-[#87af73] to-[#6b8b5a] z-30 shadow-[8px_0_28px_rgba(38,49,36,0.45)] origin-left flex items-center justify-end pr-4 overflow-hidden rounded-l-[1.2rem]"
                 whileHover={{ rotateY: -14 }}
                 transition={{ type: "spring", stiffness: 110, damping: 16 }}
               >
                 <div className="absolute inset-0 opacity-20 paper-grain" />
-                <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-theme-200 via-theme-400 to-theme-200" />
+                <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-black/10 via-black/40 to-black/10" />
                 <div className="absolute left-0 top-0 w-full h-full bg-gradient-to-tr from-black/25 via-transparent to-white/10" />
 
                 {/* Envelope Illustrations */}
                 <InviteImage
                   src={mandalaImage}
-                  className="absolute -top-20 md:-top-28 -left-20 md:-left-28 w-56 md:w-72 h-56 md:h-72 opacity-55 mix-blend-screen"
+                  className="absolute -top-20 md:-top-28 -left-20 md:-left-28 w-56 md:w-72 h-56 md:h-72 opacity-80 mix-blend-multiply"
                   alt=""
                 />
                 <InviteImage
                   src={mandalaImage}
-                  className="absolute -bottom-20 md:-bottom-28 -left-20 md:-left-28 w-56 md:w-72 h-56 md:h-72 opacity-50 mix-blend-screen -rotate-90"
+                  className="absolute -bottom-20 md:-bottom-28 -left-20 md:-left-28 w-56 md:w-72 h-56 md:h-72 opacity-70 mix-blend-multiply -rotate-90"
                   alt=""
                 />
 
-                <div className="text-theme-100/35 rotate-90 whitespace-nowrap text-xs tracking-[0.55em] uppercase font-bold relative z-10">
+                <div className="text-[#263124]/70 rotate-90 whitespace-nowrap text-xs tracking-[0.55em] uppercase font-bold relative z-10">
                   MADUSHIKA & DULAN
                 </div>
               </motion.div>
 
               {/* Right Flap */}
               <motion.div
-                className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-bl from-theme-800 via-theme-700 to-theme-900 z-30 shadow-[-8px_0_28px_rgba(38,49,36,0.45)] origin-right flex items-center justify-start pl-4 overflow-hidden rounded-r-[1.2rem]"
+                className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-bl from-[#87af73] via-[#87af73] to-[#6b8b5a] z-30 shadow-[-8px_0_28px_rgba(38,49,36,0.45)] origin-right flex items-center justify-start pl-4 overflow-hidden rounded-r-[1.2rem]"
                 whileHover={{ rotateY: 14 }}
                 transition={{ type: "spring", stiffness: 110, damping: 16 }}
               >
                 <div className="absolute inset-0 opacity-20 paper-grain" />
-                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-theme-200 via-theme-400 to-theme-200" />
+                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-black/10 via-black/40 to-black/10" />
                 <div className="absolute right-0 top-0 w-full h-full bg-gradient-to-tl from-black/25 via-transparent to-white/10" />
 
                 {/* Envelope Illustrations */}
                 <InviteImage
                   src={mandalaImage}
-                  className="absolute -top-20 md:-top-28 -right-20 md:-right-28 w-56 md:w-72 h-56 md:h-72 opacity-55 mix-blend-screen rotate-90"
+                  className="absolute -top-20 md:-top-28 -right-20 md:-right-28 w-56 md:w-72 h-56 md:h-72 opacity-80 mix-blend-multiply rotate-90"
                   alt=""
                 />
                 <InviteImage
                   src={mandalaImage}
-                  className="absolute -bottom-20 md:-bottom-28 -right-20 md:-right-28 w-56 md:w-72 h-56 md:h-72 opacity-50 mix-blend-screen rotate-180"
+                  className="absolute -bottom-20 md:-bottom-28 -right-20 md:-right-28 w-56 md:w-72 h-56 md:h-72 opacity-70 mix-blend-multiply rotate-180"
                   alt=""
                 />
               </motion.div>
@@ -372,7 +372,7 @@ export default function WeddingInvitation() {
               <motion.div
                 whileHover={{ scale: 1.1, rotate: -6 }}
                 whileTap={{ scale: 0.9 }}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-28 h-28 rounded-full bg-gradient-to-br from-[#d4a01c] via-[#f1b3d0] to-[#d4a01c] shadow-[0_20px_45px_-10px_rgba(212,160,28,0.65)] border-[5px] border-theme-900 flex items-center justify-center group-hover:shadow-theme-500/40"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-28 h-28 rounded-full bg-gradient-to-br from-[#d4a01c] via-[#f1b3d0] to-[#d4a01c] shadow-[0_20px_45px_-10px_rgba(212,160,28,0.65)] border-[5px] border-[#6b8b5a] flex items-center justify-center group-hover:shadow-theme-500/40"
               >
                 <div className="absolute inset-1.5 rounded-full border border-theme-400/50" />
                 <div className="absolute inset-3 rounded-full border border-theme-500/30" />
@@ -508,7 +508,7 @@ export default function WeddingInvitation() {
                       <div className="h-px w-full bg-gradient-to-l from-transparent via-theme-300 to-theme-400" />
                     </div>
                     <div className="font-cinzel space-y-1 mt-2">
-                      <p className="text-lg md:text-xl text-stone-700 tracking-[0.2em] md:tracking-[0.3em] font-bold">11 NOVEMBER 2026</p>
+                      <p className="text-2xl md:text-3xl text-stone-700 tracking-[0.2em] md:tracking-[0.3em] font-bold">11.11.2026</p>
                       <p className="text-[10px] md:text-[12px] text-theme-600 tracking-[0.2em] uppercase font-bold">Bolgoda, Sri Lanka</p>
                     </div>
                   </motion.div>
@@ -560,7 +560,7 @@ export default function WeddingInvitation() {
                       src={brideGroomImage}
                       alt="Bride and groom wedding illustration"
                       loading="eager"
-                      className="w-[200px] h-[240px] md:w-[270px] md:h-[320px] object-cover rounded-[1.6rem] border border-theme-100"
+                      className="w-[200px] h-[240px] md:w-[270px] md:h-[320px] object-cover object-top rounded-[1.6rem] border border-theme-100"
                     />
                   </div>
                 </motion.div>
@@ -843,7 +843,7 @@ export default function WeddingInvitation() {
                     <div className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent to-theme-300" />
                   </div>
                   <p className="text-stone-300 text-sm md:text-base max-w-md mx-auto leading-relaxed mb-16 tracking-wide font-light">
-                    We would be absolutely thrilled to celebrate with you. Kindly respond by the end of May.
+                    We would be absolutely thrilled to celebrate with you. Kindly respond by October 11, 2026.
                   </p>
 
                   {/* Premium RSVP Form */}
@@ -859,17 +859,14 @@ export default function WeddingInvitation() {
                       </div>
 
                       <div className="space-y-3">
-                        <label className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-theme-200 ml-2">Guests</label>
+                        <label className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-theme-200 ml-2">Attendance</label>
                         <div className="relative">
                           <select
-                            defaultValue="1"
+                            defaultValue="accept"
                             className="w-full bg-transparent border-b border-white/20 px-2 py-3 text-white focus:outline-none focus:border-theme-300 transition-colors font-cinzel text-lg md:text-xl tracking-wide appearance-none cursor-pointer"
                           >
-                            <option value="1" className="bg-[#2c2a26] text-white">1 Guest (Just Me)</option>
-                            <option value="2" className="bg-[#2c2a26] text-white">2 Guests</option>
-                            <option value="3" className="bg-[#2c2a26] text-white">3 Guests</option>
-                            <option value="4" className="bg-[#2c2a26] text-white">4 Guests</option>
-                            <option value="0" className="bg-[#2c2a26] text-theme-300">Regretfully Decline</option>
+                            <option value="accept" className="bg-[#2c2a26] text-white">Accept with Joy</option>
+                            <option value="decline" className="bg-[#2c2a26] text-theme-300">Regretfully Decline</option>
                           </select>
                           <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
                             <div className="w-2 h-2 border-r border-b border-theme-300 rotate-45 transform -translate-y-[25%]" />
@@ -878,12 +875,21 @@ export default function WeddingInvitation() {
                       </div>
 
                       <div className="space-y-3">
-                        <label className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-theme-200 ml-2">Dietary Notes</label>
-                        <input
-                          type="text"
-                          placeholder="Allergies, Vegan, etc."
-                          className="w-full bg-transparent border-b border-white/20 px-2 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-theme-300 transition-colors font-cinzel text-lg md:text-xl tracking-wide"
-                        />
+                        <label className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-theme-200 ml-2">Guest Count</label>
+                        <div className="relative">
+                          <select
+                            defaultValue="1"
+                            className="w-full bg-transparent border-b border-white/20 px-2 py-3 text-white focus:outline-none focus:border-theme-300 transition-colors font-cinzel text-lg md:text-xl tracking-wide appearance-none cursor-pointer"
+                          >
+                            <option value="1" className="bg-[#2c2a26] text-white">1 Guest</option>
+                            <option value="2" className="bg-[#2c2a26] text-white">2 Guests</option>
+                            <option value="3" className="bg-[#2c2a26] text-white">3 Guests</option>
+                            <option value="4" className="bg-[#2c2a26] text-white">4 Guests</option>
+                          </select>
+                          <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                            <div className="w-2 h-2 border-r border-b border-theme-300 rotate-45 transform -translate-y-[25%]" />
+                          </div>
+                        </div>
                       </div>
 
                       <div className="pt-10">
@@ -981,9 +987,12 @@ export default function WeddingInvitation() {
               </section>
 
               {/* Footer */}
-              <footer className="py-12 border-t border-theme-200/30 text-center relative z-10 space-y-3">
+              <footer className="py-12 border-t border-theme-200/30 text-center relative z-10 space-y-3 flex flex-col items-center">
                 <p className="text-[8px] md:text-[10px] uppercase tracking-[0.5em] text-stone-400 font-bold">
                   © 2026 Madushika & Dulan. <span className="hidden md:inline">|</span><br className="md:hidden block mt-2" /> All rights reserved.
+                </p>
+                <p className="text-stone-500 text-[10px] md:text-xs mt-4 tracking-wider">
+                  Want a beautiful wedding website like this? Create yours with <a target="_blank" rel="noreferrer" className="text-theme-600 hover:text-[#d4a01c] font-bold underline decoration-theme-300 underline-offset-4 transition-colors" href="https://wa.me/94707819074">invitemint</a>
                 </p>
               </footer>
             </div>
