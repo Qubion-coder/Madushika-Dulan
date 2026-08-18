@@ -218,6 +218,91 @@ export default function WeddingInvitation() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  // Form states
+  const [rsvpName, setRsvpName] = useState("");
+  const [rsvpAttendance, setRsvpAttendance] = useState("accept");
+  const [rsvpGuests, setRsvpGuests] = useState("1");
+  const [rsvpLoading, setRsvpLoading] = useState(false);
+  const [rsvpStatus, setRsvpStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const [wishName, setWishName] = useState("");
+  const [wishMessage, setWishMessage] = useState("");
+  const [wishLoading, setWishLoading] = useState(false);
+  const [wishStatus, setWishStatus] = useState<"idle" | "success" | "error">("idle");
+
+  // Replace this with your Google Apps Script Web App URL after deployment
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxlOcDKOTKRKPKaICbC6NxrnUcxVUwoVECNwLJH6lanVXC7LDaaNwwRWFNwyPSdzHXb/exec";
+
+  const handleRsvpSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!rsvpName || GOOGLE_SCRIPT_URL === "YOUR_GOOGLE_SCRIPT_WEB_APP_URL") {
+      if (GOOGLE_SCRIPT_URL === "YOUR_GOOGLE_SCRIPT_WEB_APP_URL") {
+        alert("Please replace GOOGLE_SCRIPT_URL with your deployed Web App URL in App.tsx");
+      }
+      return;
+    }
+    
+    setRsvpLoading(true);
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          type: "RSVP",
+          name: rsvpName,
+          attendance: rsvpAttendance,
+          guestCount: rsvpGuests,
+        }).toString(),
+      });
+      setRsvpStatus("success");
+      setRsvpName("");
+    } catch (error) {
+      console.error(error);
+      setRsvpStatus("error");
+    } finally {
+      setRsvpLoading(false);
+      setTimeout(() => setRsvpStatus("idle"), 5000);
+    }
+  };
+
+  const handleWishSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!wishName || !wishMessage || GOOGLE_SCRIPT_URL === "YOUR_GOOGLE_SCRIPT_WEB_APP_URL") {
+      if (GOOGLE_SCRIPT_URL === "YOUR_GOOGLE_SCRIPT_WEB_APP_URL") {
+        alert("Please replace GOOGLE_SCRIPT_URL with your deployed Web App URL in App.tsx");
+      }
+      return;
+    }
+
+    setWishLoading(true);
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          type: "WISH",
+          name: wishName,
+          message: wishMessage,
+        }).toString(),
+      });
+      setWishStatus("success");
+      setWishName("");
+      setWishMessage("");
+    } catch (error) {
+      console.error(error);
+      setWishStatus("error");
+    } finally {
+      setWishLoading(false);
+      setTimeout(() => setWishStatus("idle"), 5000);
+    }
+  };
+
   const toggleAudio = () => {
     if (audioRef.current) {
       if (isPlaying) {
@@ -292,6 +377,23 @@ export default function WeddingInvitation() {
               <span className="inline-block px-5 py-2 rounded-full bg-theme-50 border border-theme-200 text-[10px] uppercase tracking-[0.5em] text-theme-700 font-bold mb-6">
                 Save the Date
               </span>
+              
+              {(() => {
+                const searchParams = new URLSearchParams(window.location.search);
+                const guestPrefix = searchParams.get('prefix');
+                const guestName = searchParams.get('name');
+                if (guestPrefix && guestName) {
+                  return (
+                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }} className="mb-6 flex flex-col items-center">
+                      <span className="text-[9px] uppercase tracking-[0.4em] text-stone-400 font-bold mb-2">We cordially invite</span>
+                      <span className="font-playball text-3xl md:text-4xl text-theme-900 drop-shadow-md px-2 py-1">{guestPrefix} {guestName}</span>
+                      <div className="w-16 h-px bg-gradient-to-r from-transparent via-theme-400 to-transparent mt-3" />
+                    </motion.div>
+                  );
+                }
+                return null;
+              })()}
+
               <h1 className="font-cinzel text-4xl md:text-5xl text-stone-800 mb-4 tracking-tight">
                 Dulan & Madushika
               </h1>
@@ -542,9 +644,29 @@ export default function WeddingInvitation() {
                   className="flex flex-col items-center mb-8 md:mb-16"
                 >
                   <div className="w-px h-16 md:h-24 bg-gradient-to-b from-transparent to-theme-400 mb-6 md:mb-10" />
-                  <p className="text-theme-700 text-[9px] md:text-[12px] tracking-[0.2em] md:tracking-[0.3em] uppercase font-bold text-center leading-loose">
-                    Together with their parents,<br className="hidden md:block" />request the honour of your presence<br className="hidden md:block" />to celebrate their wedding
-                  </p>
+                  <div className="text-theme-700 text-[9px] md:text-[12px] tracking-[0.2em] md:tracking-[0.3em] uppercase font-bold text-center leading-loose">
+                    {(() => {
+                      const searchParams = new URLSearchParams(window.location.search);
+                      const guestPrefix = searchParams.get('prefix');
+                      const guestName = searchParams.get('name');
+                      if (guestPrefix && guestName) {
+                        return (
+                          <>
+                            <span className="tracking-[0.4em]">We cordially invite</span><br />
+                            <span className="font-playball text-4xl md:text-5xl lg:text-6xl text-theme-900 normal-case drop-shadow-md leading-tight block my-6 tracking-normal">
+                              {guestPrefix} {guestName}
+                            </span>
+                            <span className="tracking-[0.4em]">to celebrate our wedding</span>
+                          </>
+                        );
+                      }
+                      return (
+                        <>
+                          Together with their parents,<br className="hidden md:block" />request the honour of your presence<br className="hidden md:block" />to celebrate their wedding
+                        </>
+                      );
+                    })()}
+                  </div>
                 </motion.div>
 
                 <motion.div
@@ -848,11 +970,14 @@ export default function WeddingInvitation() {
 
                   {/* Premium RSVP Form */}
                   <div className="w-full bg-white/5 backdrop-blur-md p-6 sm:p-8 md:p-12 rounded-[2rem] border border-white/10 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)]">
-                    <form className="space-y-8 text-left" onSubmit={(e) => e.preventDefault()}>
+                    <form className="space-y-8 text-left" onSubmit={handleRsvpSubmit}>
                       <div className="space-y-3">
                         <label className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-theme-200 ml-2">Full Name</label>
                         <input
                           type="text"
+                          value={rsvpName}
+                          onChange={(e) => setRsvpName(e.target.value)}
+                          required
                           placeholder="John & Jane Doe"
                           className="w-full bg-transparent border-b border-white/20 px-2 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-theme-300 transition-colors font-cinzel text-lg md:text-xl tracking-wide"
                         />
@@ -862,7 +987,8 @@ export default function WeddingInvitation() {
                         <label className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-theme-200 ml-2">Attendance</label>
                         <div className="relative">
                           <select
-                            defaultValue="accept"
+                            value={rsvpAttendance}
+                            onChange={(e) => setRsvpAttendance(e.target.value)}
                             className="w-full bg-transparent border-b border-white/20 px-2 py-3 text-white focus:outline-none focus:border-theme-300 transition-colors font-cinzel text-lg md:text-xl tracking-wide appearance-none cursor-pointer"
                           >
                             <option value="accept" className="bg-[#2c2a26] text-white">Accept with Joy</option>
@@ -878,7 +1004,8 @@ export default function WeddingInvitation() {
                         <label className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] font-bold text-theme-200 ml-2">Guest Count</label>
                         <div className="relative">
                           <select
-                            defaultValue="1"
+                            value={rsvpGuests}
+                            onChange={(e) => setRsvpGuests(e.target.value)}
                             className="w-full bg-transparent border-b border-white/20 px-2 py-3 text-white focus:outline-none focus:border-theme-300 transition-colors font-cinzel text-lg md:text-xl tracking-wide appearance-none cursor-pointer"
                           >
                             <option value="1" className="bg-[#2c2a26] text-white">1 Guest</option>
@@ -894,10 +1021,12 @@ export default function WeddingInvitation() {
 
                       <div className="pt-10">
                         <button
-                          className="w-full bg-theme-200 text-stone-900 py-5 rounded-full font-bold uppercase tracking-[0.3em] text-[10px] md:text-sm hover:bg-white hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all duration-300 group inline-flex justify-center items-center gap-4"
+                          type="submit"
+                          disabled={rsvpLoading || !rsvpName}
+                          className="w-full bg-theme-200 text-stone-900 py-5 rounded-full font-bold uppercase tracking-[0.3em] text-[10px] md:text-sm hover:bg-white hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all duration-300 group inline-flex justify-center items-center gap-4 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           <span className="w-1.5 h-1.5 bg-stone-900 rotate-45 group-hover:scale-150 transition-transform" />
-                          Send RSVP
+                          {rsvpLoading ? "Sending..." : rsvpStatus === "success" ? "Sent Successfully!" : "Send RSVP"}
                           <span className="w-1.5 h-1.5 bg-stone-900 rotate-45 group-hover:scale-150 transition-transform" />
                         </button>
                       </div>
@@ -938,11 +1067,14 @@ export default function WeddingInvitation() {
                       {/* Decorative internal lines */}
                       <div className="absolute inset-2 md:inset-4 border-[0.5px] border-theme-200/50 rounded-tr-[3.5rem] rounded-bl-[3.5rem] pointer-events-none transition-colors duration-700 group-hover:border-theme-300/80" />
 
-                      <form className="space-y-8 text-left relative z-10" onSubmit={(e) => e.preventDefault()}>
+                      <form className="space-y-8 text-left relative z-10" onSubmit={handleWishSubmit}>
                         <div className="space-y-3">
                           <label className="text-[7px] md:text-[9px] uppercase tracking-[0.4em] font-bold text-stone-400 ml-2">Your Name</label>
                           <input
                             type="text"
+                            value={wishName}
+                            onChange={(e) => setWishName(e.target.value)}
+                            required
                             placeholder="John Doe"
                             className="w-full bg-stone-50/50 border-b border-theme-200 px-4 py-4 text-theme-900 placeholder:text-stone-300 focus:outline-none focus:border-theme-400 focus:bg-white transition-all font-cinzel text-lg tracking-wide rounded-t-lg"
                           />
@@ -951,16 +1083,24 @@ export default function WeddingInvitation() {
                           <label className="text-[7px] md:text-[9px] uppercase tracking-[0.4em] font-bold text-stone-400 ml-2">Your Message</label>
                           <textarea
                             rows={4}
+                            value={wishMessage}
+                            onChange={(e) => setWishMessage(e.target.value)}
+                            required
                             placeholder="Wishing you a lifetime of happiness..."
                             className="w-full bg-stone-50/50 border-b border-theme-200 px-4 py-4 text-theme-900 placeholder:text-stone-300 focus:outline-none focus:border-theme-400 focus:bg-white transition-all font-cinzel text-lg tracking-wide resize-none rounded-t-lg"
                           />
                         </div>
                         <div className="pt-6 flex justify-center">
-                          <button className="bg-theme-800 text-white px-12 py-5 rounded-full font-bold uppercase tracking-[0.3em] text-[10px] hover:bg-theme-900 hover:shadow-xl hover:shadow-theme-900/20 transition-all duration-300 group/btn inline-flex items-center gap-4">
+                          <button
+                            type="submit"
+                            disabled={wishLoading || !wishName || !wishMessage}
+                            className="bg-theme-800 text-white px-12 py-5 rounded-full font-bold uppercase tracking-[0.3em] text-[10px] hover:bg-theme-900 hover:shadow-xl hover:shadow-theme-900/20 transition-all duration-300 group/btn inline-flex items-center gap-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                          >
                             <span className="w-1.5 h-1.5 bg-white rotate-45 group-hover/btn:scale-150 transition-transform" />
-                            Send Wishes
+                            {wishLoading ? "Sending..." : wishStatus === "success" ? "Sent Successfully!" : "Send Wishes"}
                             <span className="w-1.5 h-1.5 bg-white rotate-45 group-hover/btn:scale-150 transition-transform" />
                           </button>
+
                         </div>
                       </form>
                     </div>

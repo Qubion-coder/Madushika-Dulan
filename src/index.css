@@ -9,7 +9,8 @@
   --font-playball: "Playball", cursive;
 
   --color-sage: #87af73;
-  --color-paper: #FDFCF8; /* Off-white */
+  --color-paper: #FDFCF8;
+  /* Off-white */
   --color-pink: #f1b3d0;
   --color-gold: #d4a01c;
 
@@ -32,7 +33,8 @@
   font-family: var(--font-montserrat);
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -141,15 +143,18 @@ html, body {
 .paper-grain {
   background-image:
     radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.85) 0.5px, transparent 0.8px),
-    radial-gradient(circle at 78% 42%, rgba(163, 182, 157, 0.3) 0.6px, transparent 0.9px), /* theme-300 */
-    radial-gradient(circle at 42% 76%, rgba(212, 160, 28, 0.15) 0.5px, transparent 0.8px); /* gold */
+    radial-gradient(circle at 78% 42%, rgba(163, 182, 157, 0.3) 0.6px, transparent 0.9px),
+    /* theme-300 */
+    radial-gradient(circle at 42% 76%, rgba(212, 160, 28, 0.15) 0.5px, transparent 0.8px);
+  /* gold */
   background-size: 9px 9px, 15px 15px, 18px 18px;
 }
 
 .paper-grain-strong {
   background-image:
     radial-gradient(circle at 22% 24%, rgba(255, 255, 255, 0.88) 0.55px, transparent 0.85px),
-    radial-gradient(circle at 70% 64%, rgba(135, 175, 115, 0.25) 0.65px, transparent 0.95px), /* theme-400 */
+    radial-gradient(circle at 70% 64%, rgba(135, 175, 115, 0.25) 0.65px, transparent 0.95px),
+    /* theme-400 */
     linear-gradient(180deg, rgba(253, 252, 248, 0.75), rgba(244, 246, 243, 0.8));
   background-size: 8px 8px, 14px 14px, 100% 100%;
 }
@@ -238,10 +243,17 @@ html, body {
   opacity: 0.3;
   border-radius: 10px;
 }
+
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
+
 .animate-marquee {
   animation: marquee 40s linear infinite;
 }
